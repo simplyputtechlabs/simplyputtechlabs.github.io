@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="SimplyPutTechLabs GenAI Basics — a beginner-friendly guide to Generative AI, LLMs, key terminology, model families, and practical learning.">
+<title>GenAI Basics | SimplyPutTechLabs</title>
+<style>
+:root{--bg:#0b1020;--panel:#121c32;--panel2:#172440;--text:#f5f7ff;--muted:#aab7cf;--blue:#9bb2ff;--mint:#76e6c5;--line:rgba(255,255,255,.12);--max:1120px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}body{margin:0;background:radial-gradient(ellipse at 90% 0%,rgba(78,102,210,.18),transparent 34%),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.035em}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--mint));color:#091123;display:grid;place-items:center;font-weight:950}.navlinks{display:flex;align-items:center;gap:23px;color:var(--muted);font-size:.9rem}.navlinks a:hover{color:white}.navlinks .pill{padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:var(--text)}
+.hero{padding:83px 0 70px;display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center}.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:#c7d5ff;background:#ffffff06;font-size:.8rem}.tag i{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}h1{font-size:clamp(2.8rem,6vw,5.3rem);line-height:1.02;letter-spacing:-.07em;margin:21px 0}.grad{background:linear-gradient(100deg,#b6c5ff,#76e6c5);background-clip:text;-webkit-background-clip:text;color:transparent}.lead{font-size:1.12rem;color:var(--muted);max-width:610px}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 17px;border:1px solid var(--line);border-radius:11px;font-weight:750;font-size:.92rem;transition:transform .2s}.btn:hover{transform:translateY(-2px)}.primary{background:#f4f7ff;color:#0b1020;border-color:#f4f7ff}.secondary{background:#ffffff08}
+.art{min-height:360px;position:relative;display:grid;place-items:center}.brain{width:min(300px,75vw);aspect-ratio:1;border:1px solid #9bb2ff66;border-radius:42% 58% 62% 38% / 45% 42% 58% 55%;transform:rotate(-9deg);background:radial-gradient(circle at 35% 28%,#f5f7ff 0,#a9bcff 3%,#627fd0 12%,#263f78 34%,#14213f 59%,#0b1020 73%);box-shadow:0 0 90px #607fff22,inset 0 0 35px #9bb2ff26;position:relative}.brain:before,.brain:after{content:"";position:absolute;inset:13%;border:1px solid #91e8d188;border-radius:50%;transform:rotate(40deg) scaleX(1.45)}.brain:after{transform:rotate(-50deg) scaleX(1.35);border-color:#9bb2ff88}.brainlabel{position:absolute;inset:0;display:grid;place-items:center;font-size:2.8rem;font-weight:900;letter-spacing:-.08em;text-shadow:0 0 28px #9bb2ff88}.float{position:absolute;padding:12px 15px;border:1px solid var(--line);border-radius:13px;background:#121c32eF;box-shadow:0 15px 45px #0003;font-size:.85rem}.float b{display:block}.float small{color:var(--muted)}.f1{top:28px;right:0}.f2{left:0;bottom:37px}.f3{right:4px;bottom:4px}
+section{padding:65px 0}.heading{max-width:700px;margin-bottom:29px}.eyebrow{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mint);font-weight:850}h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12;letter-spacing:-.05em;margin:9px 0 13px}h3{line-height:1.25}.heading p{color:var(--muted);margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:22px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#ffffff0a,#ffffff03)}.num{font-size:.76rem;font-weight:850;letter-spacing:.1em;color:var(--mint)}.card h3{margin:8px 0}.card p{margin:0;color:var(--muted);font-size:.93rem}.card a{display:inline-block;margin-top:14px;color:#c5d2ff;font-weight:700;font-size:.87rem}.card a:hover{color:var(--mint)}
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.step{padding:19px;border:1px solid var(--line);border-radius:15px;background:#ffffff05}.step span{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:#9bb2ff1b;color:var(--blue);font-weight:850}.step h3{font-size:1rem;margin:13px 0 6px}.step p{font-size:.88rem;color:var(--muted);margin:0}
+.terms{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.term{display:grid;grid-template-columns:130px 1fr;gap:15px;padding:16px;border:1px solid var(--line);border-radius:13px;background:#ffffff04}.term strong{color:#d5deff}.term span{color:var(--muted);font-size:.91rem}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.model{padding:20px;border-radius:15px;border:1px solid var(--line);background:var(--panel)}.model h3{margin:0 0 7px}.model p{margin:0;color:var(--muted);font-size:.9rem}.note{margin-top:15px;color:var(--muted);font-size:.84rem}
+.callout{padding:30px;border:1px solid #9bb2ff44;border-radius:20px;background:radial-gradient(ellipse at top right,#718fff20,transparent 60%),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:24px}.callout p{color:var(--muted);margin:0;max-width:680px}.callout h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+footer{padding:26px 0;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:820px){.hero{grid-template-columns:1fr;padding-top:62px;gap:10px}.art{min-height:315px}.cards,.models{grid-template-columns:repeat(2,1fr)}.path{grid-template-columns:repeat(2,1fr)}.navlinks{gap:13px}.navlinks a:not(.pill){display:none}.terms{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{width:calc(100% - 30px)}nav{height:64px}.brand{font-size:.92rem}.hero{padding-top:50px}.cards,.models,.path{grid-template-columns:1fr}.art{min-height:280px}.float{font-size:.77rem;padding:9px 11px}.f1{top:10px}.f2{bottom:23px}.term{grid-template-columns:105px 1fr;gap:10px}.callout{padding:23px;align-items:flex-start;flex-direction:column}section{padding:52px 0}}
+</style>
+</head>
+<body>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#top"><span class="logo">S</span><span>SimplyPutTechLabs</span></a><div class="navlinks"><a href="#learn">Learning path</a><a href="#terms">LLM terms</a><a href="#models">Models</a><a class="pill" href="#resources">Start learning ↗</a></div></nav></header>
+<main id="top">
+<section class="hero wrap">
+<div><div class="tag"><i></i> A beginner-friendly GenAI guide</div><h1>Generative AI,<br><span class="grad">simply explained.</span></h1><p class="lead">Understand the ideas behind ChatGPT and modern AI tools. Learn the fundamentals, decode essential LLM terminology, explore model families, and build your knowledge one concept at a time.</p><div class="buttons"><a class="btn primary" href="#learn">Start with the basics ↓</a><a class="btn secondary" href="#terms">Explore key terms</a></div></div>
+<div class="art" aria-label="Abstract illustration representing generative AI"><div class="brain"></div><div class="brainlabel">GenAI<span class="grad">.</span></div><div class="float f1"><b>Large Language Models</b><small>Patterns · Context · Tokens</small></div><div class="float f2"><b>Prompt → Response</b><small>Human + machine collaboration</small></div><div class="float f3"><b>Learn by exploring ✦</b></div></div>
+</section>
+<section class="wrap" id="learn"><div class="heading"><div class="eyebrow">Your learning path</div><h2>From first principles to real-world use.</h2><p>Follow this sequence to develop a strong foundation before diving into advanced models and applications.</p></div>
+<div class="path">
+<article class="step"><span>01</span><h3>What is GenAI?</h3><p>Understand generative AI, what it can create, and how it differs from traditional AI.</p></article>
+<article class="step"><span>02</span><h3>How LLMs work</h3><p>Explore training data, tokens, context windows, next-token prediction, and inference.</p></article>
+<article class="step"><span>03</span><h3>Prompts &amp; outputs</h3><p>Learn prompting, system instructions, temperature, hallucinations, and evaluation.</p></article>
+<article class="step"><span>04</span><h3>Models &amp; applications</h3><p>Compare model families and discover RAG, embeddings, agents, and practical use cases.</p></article>
+</div></section>
+<section class="wrap" id="concepts"><div class="heading"><div class="eyebrow">Core concepts</div><h2>The essentials, at a glance.</h2><p>Start with these foundational ideas. Each one helps explain how modern generative AI systems behave.</p></div>
+<div class="cards">
+<article class="card"><div class="num">CONCEPT 01</div><h3>Generative AI</h3><p>AI systems that generate new content—such as text, images, audio, video, or code—based on patterns learned from data.</p></article>
+<article class="card"><div class="num">CONCEPT 02</div><h3>Large Language Model</h3><p>A model trained on large amounts of text to process and generate language, often by predicting the next token.</p></article>
+<article class="card"><div class="num">CONCEPT 03</div><h3>Training vs. inference</h3><p>Training adjusts a model's parameters using data. Inference is when the trained model produces an answer to an input.</p></article>
+<article class="card"><div class="num">CONCEPT 04</div><h3>Prompt engineering</h3><p>Writing clear instructions, context, constraints, and examples to guide a model toward a useful response.</p></article>
+<article class="card"><div class="num">CONCEPT 05</div><h3>Retrieval-Augmented Generation</h3><p>RAG retrieves relevant information from external sources and supplies it to a model to help ground its response.</p></article>
+<article class="card"><div class="num">CONCEPT 06</div><h3>Responsible AI</h3><p>Think about privacy, bias, safety, reliability, copyright, and human review when using AI systems.</p></article>
+</div></section>
+<section class="wrap" id="terms"><div class="heading"><div class="eyebrow">LLM vocabulary</div><h2>Terminology worth knowing.</h2><p>Use this quick reference as you read model documentation, tutorials, and research.</p></div>
+<div class="terms">
+<div class="term"><strong>Token</strong><span>A chunk of text—such as a word, part of a word, or punctuation—that a model processes.</span></div>
+<div class="term"><strong>Context window</strong><span>The amount of tokenized information a model can consider in a single request, subject to its limits.</span></div>
+<div class="term"><strong>Parameters</strong><span>Learned numerical values inside a model that influence its outputs.</span></div>
+<div class="term"><strong>Embedding</strong><span>A numerical representation of content used to capture aspects of meaning or similarity.</span></div>
+<div class="term"><strong>Temperature</strong><span>A generation setting that can affect the randomness of token selection; its effect depends on the system.</span></div>
+<div class="term"><strong>Hallucination</strong><span>An answer that sounds plausible but includes incorrect, unsupported, or fabricated information.</span></div>
+<div class="term"><strong>Fine-tuning</strong><span>Further training a pretrained model on selected data to adapt its behavior for a task or domain.</span></div>
+<div class="term"><strong>AI agent</strong><span>A system that uses a model to decide steps and may call tools to pursue a goal.</span></div>
+</div></section>
+<section class="wrap" id="models"><div class="heading"><div class="eyebrow">Model landscape</div><h2>Explore different model families.</h2><p>Different models have different strengths, capabilities, costs, and access options. Always check current documentation for details.</p></div>
+<div class="models">
+<article class="model"><h3>GPT</h3><p>OpenAI's family of models used for language, reasoning, coding, and multimodal tasks, depending on the model.</p></article>
+<article class="model"><h3>Claude</h3><p>Anthropic's family of AI models, commonly used for writing, analysis, coding, and working with long documents.</p></article>
+<article class="model"><h3>Gemini</h3><p>Google's family of models designed for a range of tasks, with multimodal capabilities varying by model.</p></article>
+<article class="model"><h3>Llama</h3><p>Meta's family of language models, with releases and usage terms that vary across model versions.</p></article>
+<article class="model"><h3>Mistral</h3><p>Mistral AI's range of models, including options designed for different performance and deployment needs.</p></article>
+<article class="model"><h3>DeepSeek</h3><p>A family of models associated with language, coding, and reasoning capabilities across different releases.</p></article>
+</div><p class="note">This is an introductory overview, not a performance ranking. Capabilities, model names, pricing, and availability change over time.</p></section>
+<section class="wrap" id="resources"><div class="callout"><div><div class="eyebrow">Keep learning</div><h2>Curiosity is the best starting prompt.</h2><p>Study one concept at a time, test it with small examples, compare outputs, and verify important facts. Follow the SimplyPutTechLabs learning journey as you build your GenAI foundations.</p></div><a class="btn primary" href="https://github.com/simplyputtechlabs/simplyputtechlabs.github.io" target="_blank" rel="noopener noreferrer">Visit the GitHub project ↗</a></div></section>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> SimplyPutTechLabs · GenAI Basics</span><a href="#top">Back to top ↑</a></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+</body>
+</html>
